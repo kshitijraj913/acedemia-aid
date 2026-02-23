@@ -39,12 +39,11 @@ const Auth = () => {
           password,
           options: {
             data: { display_name: displayName },
-            emailRedirectTo: window.location.origin,
+            
           },
         });
         if (error) throw error;
-        toast({ title: "Check your email", description: "We sent you a confirmation link." });
-      } else {
+toast({ title: "Account created", description: "You can now login." });      } else {
         const { error } = await supabase.auth.resetPasswordForEmail(email, {
           redirectTo: `${window.location.origin}/reset-password`,
         });
